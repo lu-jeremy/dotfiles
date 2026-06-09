@@ -60,7 +60,6 @@ map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 -- Terminal (opens in a bottom split so :q doesn't kill nvim)
 map("n", "<leader>tt", ":belowright split | terminal<CR>i", { desc = "Open terminal" })
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-map("t", "<C-c>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Splits
 map("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical split" })
