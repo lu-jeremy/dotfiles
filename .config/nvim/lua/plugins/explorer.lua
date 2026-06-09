@@ -10,25 +10,13 @@ return {
         return { desc = desc, buffer = bufnr, noremap = true, silent = true }
       end
 
-      -- Navigation
-      vim.keymap.set("n", "<CR>", api.node.open.edit, opts("Open"))
+      -- Load all default keybinds first
+      api.config.mappings.default_on_attach(bufnr)
+
+      -- Add custom keybinds on top
       vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
       vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close folder"))
-      vim.keymap.set("n", "v", api.node.open.vertical, opts("Open in vsplit"))
-      vim.keymap.set("n", "s", api.node.open.horizontal, opts("Open in split"))
-      vim.keymap.set("n", "t", api.node.open.tab, opts("Open in new tab"))
-
-      -- File operations
-      vim.keymap.set("n", "a", api.fs.create, opts("Create file/folder"))
-      vim.keymap.set("n", "d", api.fs.remove, opts("Delete"))
-      vim.keymap.set("n", "r", api.fs.rename, opts("Rename"))
-      vim.keymap.set("n", "x", api.fs.cut, opts("Cut"))
-      vim.keymap.set("n", "c", api.fs.copy.node, opts("Copy"))
-      vim.keymap.set("n", "p", api.fs.paste, opts("Paste"))
-
-      -- Misc
-      vim.keymap.set("n", "q", api.tree.close, opts("Close tree"))
-      vim.keymap.set("n", "R", api.tree.reload, opts("Refresh"))
+      vim.keymap.set("n", "Y", api.fs.copy.absolute_path, opts("Copy absolute path"))
       vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
     end
 

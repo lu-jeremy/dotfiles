@@ -3,6 +3,13 @@ local map = vim.keymap.set
 -- C-c acts as Esc everywhere
 map("i", "<C-c>", "<Esc>")
 
+-- Copy current file's absolute path
+map("n", "<leader>cp", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  print(path)
+end, { desc = "Copy file path" })
+
 -- Clear search highlight
 map("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear search highlight" })
 
